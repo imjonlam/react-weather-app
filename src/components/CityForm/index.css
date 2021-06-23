@@ -1,0 +1,18 @@
+.form-city {
+  border-color: transparent;
+  border-style: solid;
+  border-radius: 5px;
+
+  background-color: #000000;
+  opacity: 0.7;
+
+  color: #FFFFFF;
+}
+
+.form-city:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: #FFFFFF;
+}
