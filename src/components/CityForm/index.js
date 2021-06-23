@@ -26,6 +26,7 @@ const CityForm = props => {
 
 CityForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  placeholder: PropTypes.string.isRequired,
 };
 
 export default CityForm;

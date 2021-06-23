@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './index.css';
 
 const WeatherCard = ({city, data}) => {
@@ -69,5 +70,11 @@ const WeatherCard = ({city, data}) => {
     </div>
   )
 }
+
+WeatherCard.propTypes = {
+  city: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
 
 export default WeatherCard;
