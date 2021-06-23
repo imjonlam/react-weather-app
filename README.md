@@ -14,7 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - ### `yarn start`
 
 ## Mentions:
-- Design adapted from: https://dev.to/mariorodeghiero/weather-app-built-in-pure-javascript-2n9
+- Front-end Design adapted from: https://dev.to/mariorodeghiero/weather-app-built-in-pure-javascript-2n9
 - Background image from: https://www.deviantart.com/rogue-rattlesnake/art/Toronto-City-Skyline-Above-The-City-737486905
 
 ## Examples:
