@@ -18,7 +18,7 @@ const CityForm = props => {
         className="form-city"
         value={city}
         onChange={e => setCity(e.target.value)}
-        placeholder="Enter your city... "
+        placeholder={props.placeholder}
       />
     </form>
   );

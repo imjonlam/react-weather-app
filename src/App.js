@@ -14,25 +14,30 @@ function App() {
     fetch(currentWeatherURL.replace('{city}', city))
       .then(result => result.json())
       .then(res => [res.coord.lat, res.coord.lon])
+      .catch(e => null)
   );
 
   const getForecast = city => (
     getCoord(city)
-      .then(coords => (
-        fetch(oneCallURL.replace('lat={lat}&lon={lon}', `lat=${coords[0]}&lon=${coords[1]}`))
-          .then(result => result.json())
-          .then(res => {
-            setForecast(res);
-            setCity(city);
-          })
-      ))
+      .then(coords => {
+        if (coords != null) {
+          fetch(oneCallURL.replace('lat={lat}&lon={lon}', `lat=${coords[0]}&lon=${coords[1]}`))
+            .then(result => result.json())
+            .then(res => {
+              setForecast(res);
+              setCity(city);
+            })
+        }
+      })
   );
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>The Weather Forecast</h1>
-        <CityForm onSubmit={getForecast} />
+        <CityForm 
+          placeholder={"Enter your city..."}
+          onSubmit={getForecast} />
         {forecast ? 
           <WeatherCard
             city={city}
