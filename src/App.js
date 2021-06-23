@@ -4,8 +4,9 @@ import WeatherCard from './components/WeatherCard';
 import './App.css';
 
 function App() {
-  const [forecast, setForecast] = useState(null);
+  const [placeholder, setPlaceholder] = useState('Enter your city...');
   const [city, setCity] = useState('');
+  const [forecast, setForecast] = useState(null);
 
   const currentWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q={city}&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP}`;
   const oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=minutely,hourly,alerts&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP}&units=imperial`
@@ -13,8 +14,14 @@ function App() {
   const getCoord = city => (
     fetch(currentWeatherURL.replace('{city}', city))
       .then(result => result.json())
-      .then(res => [res.coord.lat, res.coord.lon])
-      .catch(e => null)
+      .then(res => {
+        setPlaceholder('Enter your city...');
+        return [res.coord.lat, res.coord.lon]
+      })
+      .catch(e => {
+        setPlaceholder('Enter a VALID city...')
+        return null;
+      })
   );
 
   const getForecast = city => (
@@ -36,7 +43,7 @@ function App() {
       <header className="App-header">
         <h1>The Weather Forecast</h1>
         <CityForm 
-          placeholder={"Enter your city..."}
+          placeholder={placeholder}
           onSubmit={getForecast} />
         {forecast ? 
           <WeatherCard
